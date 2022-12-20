@@ -4,7 +4,7 @@ class CreateRecipes < ActiveRecord::Migration[7.0]
       t.string :name
       t.integer :preparation_time
       t.integer :cooking_time
-      t.text :descrition
+      t.text :description
       t.boolean :public
       t.references :author, null: false, foreign_key: { to_table: :users }
 
