@@ -1,3 +1,5 @@
+# rubocop:disable Metrics/BlockLength
+
 ActiveRecord::Schema[7.0].define(version: 20_221_220_091_720) do
   enable_extension 'plpgsql'
   create_table 'foods', force: :cascade do |t|
@@ -44,3 +46,5 @@ ActiveRecord::Schema[7.0].define(version: 20_221_220_091_720) do
   add_foreign_key 'recipe_foods', 'recipes'
   add_foreign_key 'recipes', 'users', column: 'author_id'
 end
+
+# rubocop:enable Metrics/BlockLength
