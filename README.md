@@ -59,11 +59,9 @@ And all of this will be built in a beautiful and well-organized way!
 
 ### Key Features <a name="key-features"></a>
 
-- **User can Post**
-- **User can Like**
-- **User can Comment**
-- **User can Delete or Update Post, Comment and Like**
-- **User can Login and Logout**
+- **Create recipes**
+- **Generate a shopping list**
+- **User can save Ingredients**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -102,7 +100,7 @@ Clone this repository to your desired folder
 
 ```sh
   cd my-folder
-  git clone https://github.com/alanluqman/myclan.git
+  git clone https://github.com/alanluqman/RecipeApp.git
 ```
 
 
@@ -149,6 +147,11 @@ coming soon...
 
 - GitHub: [@alanluqman](https://github.com/alanluqman)
 - LinkedIn: [Alan luqman](https://www.linkedin.com/in/alan-luqman-61623b17a/)
+
+👤 **Gordon Otieno**
+
+- GitHub: [@gordonotieno](https://github.com/gordonotieno)
+- LinkedIn: [Alan luqman](https://www.linkedin.com/in/gordonotieno/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
