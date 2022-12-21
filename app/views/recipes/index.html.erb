@@ -1,2 +1,11 @@
-<h1>Recipes#index</h1>
-<p>Find me in app/views/recipes/index.html.erb</p>
+<%= render 'partials/navigation'%>
+<div class = 'container'>
+  <% @recipes.each do |recipe| %>
+    <div class = 'recipe_card'>
+      <a href = "/users/<%= @user.id %>/recipes/<%= recipe.id %> ">
+        <h1><%= recipe.name %></h1>
+        <p><%= recipe.description %></p>
+      </a>
+    </div>
+  <% end %>
+</div>
