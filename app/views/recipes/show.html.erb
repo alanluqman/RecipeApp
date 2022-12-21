@@ -1,2 +1,29 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<%= render 'partials/navigation'%>
+<div class = 'container'>
+  <h1><%= @recipe.name %></h1>
+  <p><%= @recipe.description %>  </p>
+  <h2>Preparation time : <%= @recipe.preparation_time %> Hours</h2>
+  <h2>Cooking time : <%= @recipe.cooking_time %> Hours</h2>
+  <%= link_to 'Add Ingrediant', new_user_recipe_recipe_food_path(user_id: @user.id, recipe_id: @recipe.id), class:'btn btn_orange'  %>
+<br>
+<hr>
+ <table>
+  <tr>
+    <th>Food</th>
+    <th>Quantity</th>
+    <th>Value</th>
+    <th>Action</th>
+  </tr>
+  <%if @ingrediants.length != 0 %>
+  <% @ingrediants.each do |ingredient| %>
+  <tr>
+    <td> <%= ingredient.food.name %> </td>
+    <td> <%= ingredient.quantity %> </td>
+    <td> <%= ingredient.food.price * ingredient.quantity.to_i %> </td>
+    <td> </td>
+  </tr>
+  <% end %>
+ </table>
+ <% end %>
+
+</div>
