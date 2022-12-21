@@ -4,12 +4,10 @@ class FoodsController < ApplicationController
     @foods = Food.where(author_id: @user.id)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @user = User.find(params[:user_id])
-
   end
 
   def create
@@ -23,14 +21,13 @@ class FoodsController < ApplicationController
     end
   end
 
-  def update
-  end
+  def update; end
 
-  def destroy
-  end
+  def destroy; end
 
   private
+
   def food_data
-   params.permit(:name,:measurement_unit,:quantity,:price)
+    params.permit(:name, :measurement_unit, :quantity, :price)
   end
 end

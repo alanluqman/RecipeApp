@@ -1,15 +1,14 @@
 class RecipesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @recipes = Recipe.where(public: false, author_id: @user.id )
+    @recipes = Recipe.where(public: false, author_id: @user.id)
   end
 
   def public_recipes
     @recipes = Recipe.where(public: true)
   end
 
-  def new
-  end
+  def new; end
 
   def show
     @user = User.find(params[:user_id])
@@ -27,11 +26,9 @@ class RecipesController < ApplicationController
     end
   end
 
-  def update
-  end
+  def update; end
 
-  def destroy
-  end
+  def destroy; end
 
   private
 

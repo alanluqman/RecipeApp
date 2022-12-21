@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "users#index"
+  root 'users#index'
   resources :users do
     resources :foods
     get '/public_recipes', to: 'recipes#public_recipes'
