@@ -1,0 +1,12 @@
+<%= render 'partials/navigation'%>
+<div class = 'container'>
+<%= link_to 'Add Recipe', new_user_recipe_path, class:'btn btn_orange'  %>
+  <% @recipes.each do |recipe| %>
+    <div class = 'recipe_card'>
+      <a href = "/users/<%= @user.id %>/recipes/<%= recipe.id %> ">
+        <h1><%= recipe.name %></h1>
+        <p><%= recipe.description %></p>
+      </a>
+    </div>
+  <% end %>
+</div>

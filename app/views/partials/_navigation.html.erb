@@ -1,0 +1,18 @@
+
+<div class = 'navbar bg_black'>
+  <div class = 'container'>
+    <nav class = 'd_flex space_between align_center'>
+      <div>
+        <%= link_to 'Foods', user_foods_path(user_id: 2),class: 'nav_link' %>
+        <%= link_to 'Recipes', user_recipes_path(user_id: 1),class: 'nav_link' %>
+        <%= link_to 'Public Recipes', user_public_recipes_path(user_id: 1),class: 'nav_link' %>
+        </div>
+      <div class = 'd_flex align_center'>
+        <p class = 'white_color'>Username</p>
+        <%= link_to 'Logout', users_path,class: 'nav_link' %>
+        <%= link_to 'Login', users_path,class: 'nav_link' %>
+        <%= link_to 'Register', users_path,class: 'btn btn_orange' %>
+      </div>
+    </nav>
+  </div>
+</div>

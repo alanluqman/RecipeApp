@@ -1,0 +1,23 @@
+<%= render 'partials/navigation'%>
+<div class = 'container'>
+   <%= link_to 'Add Food', new_user_food_path, class:'btn btn_orange'  %>
+        <table>
+            <tr>
+                <th>Food</th>
+                <th>Measurement unit</th>
+                <th>Unit Price</th>
+                <th>Action</th>
+            </tr>
+
+            <% @foods.each do |food| %>
+            <tr>
+                <td> <%= food.name %> </td>
+                <td> <%= food.measurement_unit %> </td>
+                <td> <%= food.price %> </td>
+                <td> </td>
+            </tr>
+            <% end %>
+        </table>
+
+
+</div>

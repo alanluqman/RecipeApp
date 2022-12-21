@@ -1,0 +1,14 @@
+<%= render 'partials/navigation'%>
+<div class = 'container'>
+  <% @recipes.each do |recipe| %>
+    <div class = 'recipe_card'>
+      <a href = "/users/<%= recipe.author_id %>/recipes/<%= recipe.id %> " >
+        <div>
+          <h1><%= recipe.name %></h1>
+          <h2> By: <%= recipe.author.name %></h2>
+        </div>
+        <p><%= recipe.description %></p>
+      </a>
+    </div>
+  <% end %>
+</div>

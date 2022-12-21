@@ -1,0 +1,12 @@
+<%= render 'partials/navigation'%>
+<div class = 'container'>
+  <%= form_with model: @recipes, local: true, url:  user_recipes_path do |f| %> 
+    <%= f.text_field :name, placeholder: 'Recipe Name' , required: true %>
+    <%= f.text_field :preparation_time, placeholder: 'Preparation time' , required: true %>
+    <%= f.text_field :cooking_time, placeholder: 'Cooking time' , required: true %>
+    <%= f.text_area :description, placeholder: 'Description' , required: true %>
+    <%= f.label :public %> 
+    <%= f.check_box :public, placeholder: 'Quantity' %> 
+    <%= f.submit "Add Recipe" , class: 'btn btn_orange' %> 
+  <% end %>  
+</div>
