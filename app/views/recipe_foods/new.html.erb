@@ -1,2 +1,8 @@
-<h1>RecipeFoods#new</h1>
-<p>Find me in app/views/recipe_foods/new.html.erb</p>
+<%= render 'partials/navigation'%>
+<div class = 'container'>
+  <%= form_with model: @recipeFoods, local: true, url:  user_recipe_recipe_foods_path do |f| %> 
+    <%= f.collection_select :food_id , Food.order(:name) ,:id, :name, include_blank: true %>
+    <%= f.text_field :quantity, placeholder: 'Quantity' , required: true %> 
+    <%= f.submit "Add food" , class: 'btn btn_orange' %> 
+  <% end %> 
+</div>
