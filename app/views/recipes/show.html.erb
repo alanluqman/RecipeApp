@@ -14,8 +14,8 @@
     <th>Value</th>
     <th>Action</th>
   </tr>
-  <%if @ingrediants.length != 0 %>
-  <% @ingrediants.each do |ingredient| %>
+  <%if @recipe.recipe_foods.length != 0 %>
+  <% @recipe.recipe_foods.each do |ingredient| %>
   <tr>
     <td> <%= ingredient.food.name %> </td>
     <td> <%= ingredient.quantity %> </td>
