@@ -8,20 +8,41 @@ class RecipeFoodsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
     @recipe = Recipe.find(params[:recipe_id])
     new_ingredient = @recipe.recipe_foods.new(params_data)
 
     if new_ingredient.save
-      redirect_to user_recipe_path(user_id: @user.id, id: @recipe.id)
+      redirect_to user_recipe_path(user_id: current_user.id, id: @recipe.id)
     else
       p 'ingredient was not created'
     end
   end
 
-  def update; end
+  def edit
+    @ingredient = RecipeFood.find(params[:id])
+  end
 
-  def destroy; end
+  def update
+    recipe = Recipe.find(params[:recipe_id])
+    r_food = RecipeFood.find(params[:id])
+    r_food.update(params_data)
+
+    if r_food.save
+      redirect_to user_recipe_path(user_id: current_user.id, id: recipe.id)
+    else
+      p 'Ingredient does not updated !'
+    end
+  end
+
+  def destroy
+    @recipe = Recipe.find(params[:recipe_id])
+    ingredient = RecipeFood.find(params[:id])
+    if ingredient.destroy
+      redirect_to user_recipe_path(user_id: current_user.id, id: @recipe.id)
+    else
+      p 'ingredient was not created'
+    end
+  end
 
   private
 
