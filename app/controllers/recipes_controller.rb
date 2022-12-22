@@ -1,7 +1,6 @@
 class RecipesController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
-    @recipes = Recipe.where(public: false, author_id: @user.id)
+    @recipes = Recipe.where(public: false, author_id: current_user.id)
   end
 
   def public_recipes
@@ -11,15 +10,13 @@ class RecipesController < ApplicationController
   def new; end
 
   def show
-    @user = User.find(params[:user_id])
     @recipe = Recipe.includes(recipe_foods: [:food]).find(params[:id])
   end
 
   def create
-    @user = User.find(params[:user_id])
-    new_recipe = @user.recipes.new(params_data)
+    new_recipe = current_user.recipes.new(params_data)
     if new_recipe.save
-      redirect_to user_recipes_path(user_id: @user.id)
+      redirect_to user_recipes_path(user_id: current_user.id)
     else
       p 'Recipe does not added successfully !'
     end
@@ -27,7 +24,15 @@ class RecipesController < ApplicationController
 
   def update; end
 
-  def destroy; end
+  def destroy
+    @recipe = Recipe.includes(:recipe_foods).find(params[:id])
+    @recipe.recipe_foods.each(&:destroy)
+    if @recipe.destroy
+      redirect_to user_recipes_path(user_id: current_user.id)
+    else
+      p 'Recipe does not deleted !'
+    end
+  end
 
   private
 
