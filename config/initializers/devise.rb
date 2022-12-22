@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Assuming you have not yet modified this file, each configuration option below
 # is set to its default value. Note that some are commented out while others
 # are not: uncommented lines are intended to protect your configuration from
@@ -8,6 +6,7 @@
 #
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
+# rubocop:disable Layout/LineLength
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
@@ -128,6 +127,7 @@ Devise.setup do |config|
   # Set up a pepper to generate the hashed password.
   # config.pepper = 'b56df934bc35e1168f84dce9945baa722ac829a9b889c74441827ab049ddc2239f583c3b4f7d6dcfc733d4799d978db8aa48e5c1ec6a8a5952dba29104150995'
 
+  # rubocop:enable Layout/LineLength
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
 

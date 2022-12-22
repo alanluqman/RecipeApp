@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
-    before_action :authenticate_user! 
-    protect_from_forgery with: :exception
-    before_action :update_allowed_parameters, if: :devise_controller?
-    
-    protected
+  before_action :authenticate_user!
+  protect_from_forgery with: :exception
+  before_action :update_allowed_parameters, if: :devise_controller?
+
+  protected
 
   def after_sign_out_path_for(_resource_or_scope)
     request.referrer
@@ -18,5 +18,4 @@ class ApplicationController < ActionController::Base
       u.permit(:name, :email, :password, :current_password, :confirmation_token)
     end
   end
-    
 end
