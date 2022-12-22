@@ -1,13 +1,14 @@
 require 'active_support/core_ext/integer/time'
 
+# rubocop:disable Metrics/BlockLength
 Rails.application.configure do
   config.after_initialize do
-    Bullet.enable        = true
-    Bullet.alert         = true
+    Bullet.enable = true
+    Bullet.alert = true
     Bullet.bullet_logger = true
-    Bullet.console       = true
-    Bullet.rails_logger  = true
-    Bullet.add_footer    = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+    Bullet.add_footer = true
   end
   config.cache_classes = false
   config.eager_load = false
@@ -40,3 +41,4 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
+# rubocop:enable Metrics/BlockLength
