@@ -1,21 +1,16 @@
 class FoodsController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
-    @foods = Food.where(author_id: @user.id)
+    @foods = Food.where(author_id: current_user.id)
   end
 
   def show; end
 
-  def new
-    @user = User.find(params[:user_id])
-  end
+  def new; end
 
   def create
-    # debugger
-    @user = User.find(params[:user_id])
-    new_food = @user.foods.new(food_data)
+    new_food = current_user.foods.new(food_data)
     if new_food.save
-      redirect_to user_foods_path(user_id: @user.id)
+      redirect_to user_foods_path(user_id: current_user.id)
     else
       p 'Food was not created'
     end
@@ -24,11 +19,8 @@ class FoodsController < ApplicationController
   def update; end
 
   def destroy
-    food = Food.find(params[:id])
-    recipe_foods = RecipeFood.where(food_id: food.id)
-    recipe_foods.each do |rfood|
-      rfood.destroy
-    end
+    food = Food.includes(:recipe_foods).find(params[:id])
+    food.recipe_foods.each(&:destroy)
     if food.destroy
       redirect_to user_foods_path(user_id: current_user.id)
     else
