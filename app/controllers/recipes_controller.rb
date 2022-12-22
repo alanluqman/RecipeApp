@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
   end
 
   def public_recipes
-    @recipes = Recipe.where(public: true)
+    @recipes = Recipe.includes(:author).where(public: true)
   end
 
   def new; end

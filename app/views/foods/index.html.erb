@@ -14,10 +14,13 @@
                 <td> <%= food.name %> </td>
                 <td> <%= food.measurement_unit %> </td>
                 <td> <%= food.price %> </td>
-                <td> </td>
+                <td>      <%= button_to 'Delete', user_food_path(user_id: current_user.id, id: food.id), method: :delete , class: '' %>
+ </td>
             </tr>
             <% end %>
         </table>
-
+<% if can? :destroy, @post %>
+      <%= button_to 'Delete Post', user_post_path(user_id: @user.id, id: @post.id), method: :delete , class: 'delete_btn red_color' %>
+    <% end %>
 
 </div>

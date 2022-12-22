@@ -23,7 +23,18 @@ class FoodsController < ApplicationController
 
   def update; end
 
-  def destroy; end
+  def destroy
+    food = Food.find(params[:id])
+    recipe_foods = RecipeFood.where(food_id: food.id)
+    recipe_foods.each do |rfood|
+      rfood.destroy
+    end
+    if food.destroy
+      redirect_to user_foods_path(user_id: current_user.id)
+    else
+      p 'food does not deleted !'
+    end
+  end
 
   private
 
