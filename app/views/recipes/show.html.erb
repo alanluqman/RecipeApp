@@ -4,7 +4,8 @@
   <p><%= @recipe.description %>  </p>
   <h2>Preparation time : <%= @recipe.preparation_time %> Hours</h2>
   <h2>Cooking time : <%= @recipe.cooking_time %> Hours</h2>
-  <%= link_to 'Add Ingrediant', new_user_recipe_recipe_food_path(user_id: @user.id, recipe_id: @recipe.id), class:'btn btn_orange'  %>
+  
+  <%= link_to 'Add Ingrediant', new_user_recipe_recipe_food_path(user_id: current_user.id, recipe_id: @recipe.id), class:'btn btn_orange'  %>
 <br>
 <hr>
  <table>
@@ -19,9 +20,13 @@
   <tr>
     <td> <%= ingredient.food.name %> </td>
     <td> <%= ingredient.quantity %> </td>
-    <td> <%= ingredient.food.price * ingredient.quantity.to_i %> </td>
-    <td> </td>
-  </tr>
+    <td> <%= ingredient.food.price * ingredient.quantity.to_i %> $ </td>
+    <td class = 'd_flex'>
+      <% if @recipe.author == current_user %>
+      <%= link_to 'Update',  edit_user_recipe_recipe_food_path(user_id: current_user.id, recipe_id: @recipe.id,id: ingredient.id), class: '' %> 
+      <%= button_to 'Delete', user_recipe_recipe_food_path(user_id: current_user.id, recipe_id: @recipe.id,id: ingredient.id), method: :delete , class: '' %> </td>
+      <% end %>
+    </tr>
   <% end %>
  </table>
  <% end %>

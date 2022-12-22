@@ -3,10 +3,13 @@
 <%= link_to 'Add Recipe', new_user_recipe_path, class:'btn btn_orange'  %>
   <% @recipes.each do |recipe| %>
     <div class = 'recipe_card'>
-      <a href = "/users/<%= @user.id %>/recipes/<%= recipe.id %> ">
+      <a href = "/users/<%= current_user.id %>/recipes/<%= recipe.id %> ">
         <h1><%= recipe.name %></h1>
         <p><%= recipe.description %></p>
       </a>
+        <% if can? :destroy, recipe %>
+          <%= button_to 'Delete', user_recipe_path(user_id: current_user.id, id: recipe.id), method: :delete , class: 'delete_btn' %>
+        <% end %>
     </div>
   <% end %>
 </div>
