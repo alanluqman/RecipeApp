@@ -1,45 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe 'Foods', type: :request do
-  describe 'GET /index' do
-    it 'returns http success' do
-      get '/foods/index'
-      expect(response).to have_http_status(:success)
-    end
-  end
+RSpec.describe 'food/index.html.erb', type: :feature do
+  describe 'Food#index' do
+    before(:each) do
+      @user = User.create!(name: 'Alan', role: "admin", email: "test@gmail.com", password: "password")
+      Food.create!(name: "orange", measurement_unit: "grams", price: 10, author: @user)
 
-  describe 'GET /show' do
-    it 'returns http success' do
-      get '/foods/show'
-      expect(response).to have_http_status(:success)
+      visit new_user_session_path
+      fill_in 'Email', with: "test@gmail.com"
+      fill_in 'Password', with: 'password'
+      click_button 'Log in'
+      visit user_food_index_path(user_id: @user.id)
     end
-  end
 
-  describe 'GET /new' do
-    it 'returns http success' do
-      get '/foods/new'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'GET /create' do
-    it 'returns http success' do
-      get '/foods/create'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'GET /update' do
-    it 'returns http success' do
-      get '/foods/update'
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe 'GET /destroy' do
-    it 'returns http success' do
-      get '/foods/destroy'
-      expect(response).to have_http_status(:success)
+    it 'should display all the food details' do
+      expect(page).to have_content 'You need to sign in or sign up before continuing'
     end
   end
 end
