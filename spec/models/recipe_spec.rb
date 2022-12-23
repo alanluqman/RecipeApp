@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
   subject do
-    user = User.new(name: 'gordon', email: 'test@test.com', role: 'admin', password:'pass123')
-    Recipe.new(name: 'pizzah', preparation_time: 2, cooking_time: 2, description: 'This is the description', public: true, author: user )
+    user = User.new(name: 'gordon', email: 'test@test.com', role: 'admin', password: 'pass123')
+    Recipe.new(name: 'pizzah', preparation_time: 2, cooking_time: 2, description: 'This is the description',
+               public: true, author: user)
   end
 
   it 'is valid with valid attributes' do
