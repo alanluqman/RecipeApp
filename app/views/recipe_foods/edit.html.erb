@@ -1,0 +1,8 @@
+<%= render 'partials/navigation'%>
+<div class = 'container'>
+  <%= form_with model: @recipeFoods, local: true, url:  user_recipe_recipe_food_path, method: :put do |f| %> 
+    <%= f.collection_select :food_id , Food.order(:name) ,:id, :name, selected: @ingredient.food_id  %>
+    <%= f.text_field :quantity, placeholder: 'Quantity' , required: true , value: @ingredient.quantity %> 
+    <%= f.submit "Update food" , class: 'btn btn_orange' %> 
+  <% end %> 
+</div>

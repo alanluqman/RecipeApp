@@ -77,11 +77,13 @@ a {
   transition: all 0.2s ease;
 }
 
-.btn_orange:hover {
-  background-color: orange;
-}
+
 .btn_orange {
   background-color: orangered;
+}
+
+.btn_orange:hover {
+  background-color: orange;
 }
 
 .recipe_card {

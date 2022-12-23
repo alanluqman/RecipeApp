@@ -1,6 +1,6 @@
 <%= render 'partials/navigation'%>
   <div class='container'>
-    <%= form_with model: @food, local: true, url: user_foods_path(user_id: @user.id) do |f| %> 
+    <%= form_with model: @food, local: true, url: user_foods_path(user_id: current_user.id) do |f| %> 
         <%= f.text_field :name, placeholder: 'Food name' , required: true %>
         <%= f.text_field :measurement_unit, placeholder: 'Measurement Unit' , required: true %>
         <%= f.text_field :price, placeholder: 'Price' , required: true %> 
