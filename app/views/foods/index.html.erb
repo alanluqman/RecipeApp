@@ -1,7 +1,14 @@
+<div class = 'banner banner_food'>
 <%= render 'partials/navigation'%>
+<br>
+<h1 class = 'heading_1 text_center white_color'>Foods</h1>
+<br>
 <div class = 'container'>
-   <%= link_to 'Add Food', new_user_food_path, class:'btn btn_orange'  %>
-        <table>
+<div class = 'recipe_card recipe_card_show'>
+  <br><br>
+  <%= link_to 'Add Food', new_user_food_path, class:'btn btn_orange heading_4'  %>
+  <br><br><br>
+        <table class = 'table'>
             <tr>
                 <th>Food</th>
                 <th>Measurement unit</th>
@@ -14,7 +21,7 @@
                 <td> <%= food.name %> </td>
                 <td> <%= food.measurement_unit %> </td>
                 <td> <%= food.price %> $</td>
-                <td> <%= button_to 'Delete', user_food_path(user_id: current_user.id, id: food.id), method: :delete , class: '' %>
+                <td> <%= button_to 'Delete', user_food_path(user_id: current_user.id, id: food.id), method: :delete , class: 'btn red_color' %>
                 </td>
             </tr>
             <% end %>
@@ -22,5 +29,8 @@
     <% if can? :destroy, @food %>
       <%= button_to 'Delete Post', user_food_path, method: :delete , class: 'delete_btn red_color' %>
     <% end %>
+</div>
+   
 
+</div>
 </div>

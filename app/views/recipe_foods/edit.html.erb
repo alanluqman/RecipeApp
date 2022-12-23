@@ -1,8 +1,16 @@
+
+<div class = 'banner banner_recipe_show'>
 <%= render 'partials/navigation'%>
-<div class = 'container'>
-  <%= form_with model: @recipeFoods, local: true, url:  user_recipe_recipe_food_path, method: :put do |f| %> 
-    <%= f.collection_select :food_id , Food.order(:name) ,:id, :name, selected: @ingredient.food_id  %>
-    <%= f.text_field :quantity, placeholder: 'Quantity' , required: true , value: @ingredient.quantity %> 
+<div class = 'container d_flex_vertical align_center'>
+<h1 class = 'white_color heading_1'>Update Ingredient </h1>
+<br><br>
+  <div class = 'session_box'>
+  <%= form_with model: @recipeFoods, local: true, url:  user_recipe_recipe_food_path, method: :put, class: 'd_flex_vertical gap_10' do |f| %> 
+    <%= f.collection_select :food_id , Food.order(:name) ,:id, :name, selected: @ingredient.food_id , class: 'form_field ' %>
+    <%= f.text_field :quantity, placeholder: 'Quantity' , required: true , value: @ingredient.quantity, class: 'form_field ' %> 
     <%= f.submit "Update food" , class: 'btn btn_orange' %> 
   <% end %> 
 </div>
+</div>
+</div>
+

@@ -2,22 +2,23 @@
 <div class = 'navbar bg_black'>
   <div class = 'container'>
     <nav class = 'd_flex space_between align_center'>
-      <div>
+      <div class = 'd_flex align_center'>
+        <h1 class = 'white_color heading_1'>Recipe<span class = 'orange_color'>App</span></h1>
         <% if user_signed_in? %>
-        <%= link_to 'Foods', user_foods_path(user_id: current_user.id),class: 'nav_link' %>
-        <%= link_to 'Recipes', user_recipes_path(user_id: current_user.id),class: 'nav_link' %>
-        <%= link_to 'Public Recipes', user_public_recipes_path(user_id: current_user.id),class: 'nav_link' %>
+          <%= link_to 'Foods', user_foods_path(user_id: current_user.id),class: 'nav_link heading_4' %>
+          <%= link_to 'Recipes', user_recipes_path(user_id: current_user.id),class: 'nav_link heading_4' %>
+          <%= link_to 'Public Recipes', user_public_recipes_path(user_id: current_user.id),class: 'nav_link heading_4' %>
         <% end %>
       </div>
       <div class = 'd_flex align_center'>
         <% if user_signed_in? %>
-        <%= link_to current_user.name, edit_user_registration_path,class: 'nav_link' %>
-        <%= form_with  url: destroy_user_session_path, method: :delete, class: 'd_flex' do |f| %>
-          <%= f.submit "Logout" , class: 'nav_link' %>
-        <% end %>
+          <%= link_to current_user.name, edit_user_registration_path,class: 'nav_link heading_4' %>
+          <%= form_with  url: destroy_user_session_path, method: :delete, class: 'd_flex heading_4' do |f| %>
+            <%= f.submit "Logout" , class: 'nav_link heading_4' %>
+          <% end %>
         <% else %>
-        <%= link_to 'Login', new_user_session_path,class: 'nav_link' %>
-        <%= link_to 'Register', new_user_registration_path,class: 'btn btn_orange' %>
+          <%= link_to 'Login', new_user_session_path,class: 'nav_link heading_3' %>
+          <%= link_to 'Register', new_user_registration_path,class: 'btn btn_orange heading_3' %>
         <% end %>
       </div>
     </nav>

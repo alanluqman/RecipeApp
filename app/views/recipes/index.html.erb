@@ -1,15 +1,20 @@
+<div class = 'banner banner_recipe'>
 <%= render 'partials/navigation'%>
-<div class = 'container'>
-<%= link_to 'Add Recipe', new_user_recipe_path, class:'btn btn_orange'  %>
+<br>
+<h1 class = 'heading_1 text_center white_color'>My Recipes</h1>
+<div class = 'container '>
+<br>
+<%= link_to 'Add Recipe', new_user_recipe_path, class:'btn btn_orange heading_4'  %>
   <% @recipes.each do |recipe| %>
     <div class = 'recipe_card'>
       <a href = "/users/<%= current_user.id %>/recipes/<%= recipe.id %> ">
-        <h1><%= recipe.name %></h1>
-        <p><%= recipe.description %></p>
+        <h1 class = 'heading_1'><%= recipe.name %></h1>
+        <p class = 'heading_3'><%= recipe.description %></p>
       </a>
         <% if can? :destroy, recipe %>
-          <%= button_to 'Delete', user_recipe_path(user_id: current_user.id, id: recipe.id), method: :delete , class: 'delete_btn' %>
+          <%= button_to 'Delete', user_recipe_path(user_id: current_user.id, id: recipe.id), method: :delete , class: 'btn red_color' %>
         <% end %>
     </div>
   <% end %>
+</div>
 </div>
