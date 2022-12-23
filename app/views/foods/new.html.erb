@@ -1,10 +1,16 @@
+<div class = 'banner banner_food'>
 <%= render 'partials/navigation'%>
-  <div class='container'>
-    <%= form_with model: @food, local: true, url: user_foods_path(user_id: current_user.id) do |f| %> 
-        <%= f.text_field :name, placeholder: 'Food name' , required: true %>
-        <%= f.text_field :measurement_unit, placeholder: 'Measurement Unit' , required: true %>
-        <%= f.text_field :price, placeholder: 'Price' , required: true %> 
-        <%= f.text_field :quantity, placeholder: 'Quantity' , required: true %> 
+  <div class='container d_flex_vertical align_center'>
+    <h1 class = 'text_center white_color heading_1'>Add new food </h1>
+    <br><br>
+    <div class = 'session_box'>
+      <%= form_with model: @food, local: true, url: user_foods_path(user_id: current_user.id), class: 'd_flex_vertical gap_10' do |f| %> 
+        <%= f.text_field :name, placeholder: 'Food name' , required: true, class: 'form_field ' %>
+        <%= f.text_field :measurement_unit, placeholder: 'Measurement Unit' , required: true , class: 'form_field '%>
+        <%= f.text_field :price, placeholder: 'Price' , required: true , class: 'form_field '%> 
+        <%= f.text_field :quantity, placeholder: 'Quantity' , required: true, class: 'form_field ' %> 
         <%= f.submit "Add food" , class: 'btn btn_orange' %> 
-        <% end %> 
+      <% end %> 
+    </div>
+</div>
 </div>
