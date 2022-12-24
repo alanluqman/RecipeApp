@@ -1,0 +1,24 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  # username: gordon
+  # password: root
+
+  username: postgres
+  password: admin
+
+
+development:
+  <<: *default
+  database: RecipeApp_development
+
+test:
+  <<: *default
+  database: RecipeApp_test
+
+production:
+  <<: *default
+  database: RecipeApp_production
+

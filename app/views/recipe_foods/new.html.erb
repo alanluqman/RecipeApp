@@ -1,0 +1,15 @@
+
+<div class = 'banner banner_recipe_show'>
+<%= render 'partials/navigation'%>
+<div class = 'container d_flex_vertical align_center'>
+<h1 class = 'white_color heading_1'>Add Ingredient </h1>
+<br><br>
+  <div class = 'session_box'>
+    <%= form_with model: @recipeFoods, local: true, url:  user_recipe_recipe_foods_path, class: 'd_flex_vertical gap_10' do |f| %> 
+      <%= f.collection_select :food_id , @foods.order(:name) ,:id, :name, include_blank: true, class: 'form_field ' %>
+      <%= f.text_field :quantity, placeholder: 'Quantity' , required: true , class: 'form_field '%> 
+      <%= f.submit "Add food" , class: 'btn btn_orange' %> 
+    <% end %> 
+  </div>
+</div>
+</div>

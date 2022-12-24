@@ -1,0 +1,57 @@
+<div class = 'banner banner_recipe_show'>
+<%= render 'partials/navigation'%>
+<div class = 'container'>
+
+<div class = 'recipe_card recipe_card_show'>
+  <div class = 'd_flex align_center space_between'>
+    <h1 class = 'heading_1'><%= @recipe.name %></h1>
+    <% if can? :manage , @recipe %>
+      <% if @recipe[:public] %>
+        <%= button_to "Private", user_recipe_make_private_path(user_id:current_user.id, recipe_id:@recipe.id), method: :patch, remote: true , class: 'btn red_color heading_4'%>
+      <% else %>
+        <%= button_to "Public", user_recipe_make_public_path(user_id:current_user.id, recipe_id:@recipe.id), method: :patch, remote: true , class: 'btn blue_color heading_4'%>
+      <% end %>
+    <% end %>
+  </div>
+  <p class = 'heading_3'>By : <%= @recipe.author.name %>  </p>
+  <p class = 'heading_4'><%= @recipe.description %>  </p>
+  <h2 class = 'heading_4'>Preparation time : <%= @recipe.preparation_time %> Hours</h2>
+  <h2 class = 'heading_4'>Cooking time : <%= @recipe.cooking_time %> Hours</h2>
+<br> 
+<hr>
+<br>
+<div class = 'd_flex space_between'>
+  <% if current_user.id == @recipe.author_id %>
+  <%= link_to 'Add Ingrediant', new_user_recipe_recipe_food_path(user_id: current_user.id, recipe_id: @recipe.id), class:'btn btn_orange heading_4'  %>
+  <% end %>
+  <%= link_to 'Generate Shopping List', user_recipe_generate_shopping_list_path(user_id: current_user.id, recipe_id: @recipe.id), class:'btn btn_green heading_4'  %>
+</div>
+  <br><br><br>
+ <table class = 'table'>
+  <tr>
+    <th>Food</th>
+    <th>Quantity</th>
+    <th>Value</th>
+    <th>Action</th>
+  </tr>
+  <%if @recipe.recipe_foods.length != 0 %>
+  <% @recipe.recipe_foods.each do |ingredient| %>
+  <tr>
+    <td> <%= ingredient.food.name %> </td>
+    <td> <%= ingredient.quantity %> </td>
+    <td> <%= ingredient.food.price * ingredient.quantity.to_i %> $ </td>
+    <td class = 'd_flex align_center justify_center gap_10'>
+      <% if @recipe.author == current_user %>
+      <%= link_to 'Update',  edit_user_recipe_recipe_food_path(user_id: current_user.id, recipe_id: @recipe.id,id: ingredient.id), class: ' blue_color' %> 
+      <%= button_to 'Delete', user_recipe_recipe_food_path(user_id: current_user.id, recipe_id: @recipe.id,id: ingredient.id), method: :delete , class: 'btn red_color' %> </td>
+      <% end %>
+    </tr>
+  <% end %>
+ </table>
+ <% end %>
+
+</div>
+  
+
+</div>
+</div>

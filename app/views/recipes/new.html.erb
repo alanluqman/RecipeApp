@@ -1,0 +1,19 @@
+<div class = 'banner banner_recipe'>
+  <%= render 'partials/navigation'%>
+  <div class = 'container d_flex_vertical align_center'>
+    <h1 class = 'white_color heading_1'> Add new Recipe </h1><br><br>
+    <div class = 'session_box '>
+      <%= form_with model: @recipes, local: true, url:  user_recipes_path , class: 'd_flex_vertical gap_10' do |f| %> 
+        <%= f.text_field :name, placeholder: 'Recipe Name' , required: true, class: 'form_field ' %>
+        <%= f.text_field :preparation_time, placeholder: 'Preparation time' , required: true, class: 'form_field ' %>
+        <%= f.text_field :cooking_time, placeholder: 'Cooking time' , required: true, class: 'form_field ' %>
+        <%= f.text_area :description, placeholder: 'Description' , required: true, class: 'form_field ' %>
+        <div class = 'd_flex align_center'>
+          <%= f.label :public , class: 'heading_4' %> 
+          <%= f.check_box :public, placeholder: 'Quantity', class: 'heading_4' %> 
+        </div>
+        <%= f.submit "Add Recipe" , class: 'btn btn_orange' %> 
+      <% end %>  
+    </div>
+  </div>
+</div>

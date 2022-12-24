@@ -1,0 +1,251 @@
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h1,h2,h3 {
+  margin: 0;
+}
+
+p {
+ margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 15px;
+}
+
+.d_flex {
+  display: flex;
+}
+
+.d_flex_vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap_10 {
+  gap: 10px
+}
+
+.align_center {
+  align-items: center;
+}
+
+.space_between {
+  justify-content: space-between;
+}
+
+.justify_center {
+  justify-content: center;
+}
+
+.text_center {
+  text-align: center;
+}
+
+.m_top_15{
+  margin-top: 15%;
+}
+
+.m_top_10{
+  margin-top: 10%;
+}
+
+.heading_1 {
+   font-size: 3rem;
+ }
+
+ .heading_2 {
+    font-size: 2.5rem;
+ }
+
+ .heading_3 {
+    font-size: 2rem;
+ }
+
+ .heading_4 {
+    font-size: 1.5rem;
+ }
+
+ .heading_medium {
+  font-size: 5rem;
+ }
+
+ .heading_large {
+   font-size: 8rem;
+ }
+
+.banner {
+  width: 100%;
+  height: 100vh;
+  background-image: url('./background.jpg');
+  background-size: 100%;
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-y: auto;
+}
+
+.banner_index {
+  background-image: url('https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjM2NTI5fQ');
+}
+
+.banner_update_user {
+  background-image: url('https://images.unsplash.com/photo-1518665750801-883c188a660d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80');
+}
+
+.banner_food {
+  background-image: url('https://s1.1zoom.me/b5050/759/Fruit_Vegetables_Tomatoes_Pepper_Grapes_Onion_512572_1920x1080.jpg');
+}
+
+.banner_recipe {
+  background-image: url('https://www.nerdwallet.com/assets/blog/wp-content/uploads/2020/09/GettyImages-1160577908-1920x1152.jpg');
+}
+
+.banner_recipe_show {
+  background-image: url('https://www.masterclass.com/cdn-cgi/image/width=828,quality=75,format=webp/https://images.ctfassets.net/3s5io6mnxfqz/GkyEQhZ31nUh1o8T6ywpI/93179edde31fa20c04a24c2e4547754e/AdobeStock_80100106.jpeg');
+}
+
+.banner_recipe_public {
+  background-image: url('https://images.unsplash.com/photo-1565650834520-0b48a5c83f43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1111&q=80');
+}
+
+.navbar {
+    padding: 10px;
+}
+
+.nav_link {
+  color: white;
+  text-decoration: none;
+  padding: 0 20px;
+  transition: all 0.2s ease;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.nav_link:hover {
+  color: orangered;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+}
+
+
+.btn_orange {
+  background-color: orangered;
+}
+
+.btn_orange:hover {
+  background-color: orange;
+}
+
+.btn_green {
+  background-color: green;
+}
+
+.btn_green:hover {
+  background-color: rgb(1, 80, 1);
+}
+
+.session_box {
+  width: fit-content;
+  padding: 5rem;
+  background-color: rgba(255, 255, 255, 0.158);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+}
+
+.field {
+  margin: 2rem 0;
+}
+
+.form_field {
+  font-size: 1.6rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 0;
+}
+
+.max_w_50rem {
+  max-width: 50rem;
+}
+
+.form_field:focus {
+  outline: 3px solid rgba(255, 94, 0, 0.445);
+}
+
+.recipe_card {
+  background-color: rgba(255, 255, 255, 0.815);
+  border-radius: 15px;
+  margin: 20px 0;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.recipe_card:hover {
+  background-color: rgba(255, 210, 210, 0.815);
+}
+
+.recipe_card_show {
+  max-width: 60rem;
+  margin: auto;
+}
+
+.recipe_card_show:hover { 
+  background-color: rgba(255, 255, 255, 0.815);
+}
+
+table, th, tr, td {
+  border: 1px gray solid;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.table {
+  width: 100%;
+}
+
+.white_color {
+  color: white;
+}
+
+.orange_color {
+  color: orangered;
+}
+
+.red_color {
+  color: red;
+}
+
+.blue_color {
+  color: rgb(73, 73, 255);
+}
+
+.bg_black {
+    background-color: black;
+}
