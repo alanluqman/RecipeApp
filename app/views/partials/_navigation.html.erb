@@ -3,7 +3,9 @@
   <div class = 'container'>
     <nav class = 'd_flex space_between align_center'>
       <div class = 'd_flex align_center'>
-        <h1 class = 'white_color heading_1'>Recipe<span class = 'orange_color'>App</span></h1>
+        <a href = '/'>
+          <h1 class = 'white_color heading_1'>Recipe<span class = 'orange_color'>App</span></h1>
+        </a>
         <% if user_signed_in? %>
           <%= link_to 'Foods', user_foods_path(user_id: current_user.id),class: 'nav_link heading_4' %>
           <%= link_to 'Recipes', user_recipes_path(user_id: current_user.id),class: 'nav_link heading_4' %>
