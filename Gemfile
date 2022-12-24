@@ -22,6 +22,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'ffi'
+  gem 'capybara'
   gem 'rspec-rails'
 end
 
@@ -30,7 +31,6 @@ group :development do
 end
 
 group :test do
-  gem 'capybara'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
   gem 'webdrivers'
