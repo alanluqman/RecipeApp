@@ -1,0 +1,29 @@
+<div class = 'banner banner_recipe_show'>
+  <%= render 'partials/navigation'%>
+  <div class = 'container'>
+    <h1 class = 'heading_1 text_center white_color'>Shopping List</h1>
+    <br><br><br>
+    <div class = 'recipe_card recipe_card_show'>
+      <h1 class = 'text_center heading_2'><%= @recipe.name %></h1>
+      <h2 class = 'text_center heading_3'>Total Food Items : <%= @items %></h2>
+      <h2 class = 'text_center heading_3'> Total Price : <%= @total_price %> $</h2>
+      <hr>
+      <table class = 'table'>
+        <tr>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Value</th>
+        </tr>
+        <%if @recipe.recipe_foods.length != 0 %>
+          <% @recipe.recipe_foods.each do |ingredient| %>
+            <tr>
+              <td> <%= ingredient.food.name %> </td>
+              <td> <%= ingredient.quantity %> </td>
+              <td> <%= ingredient.food.price * ingredient.quantity.to_i %> $ </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
