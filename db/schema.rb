@@ -1,6 +1,5 @@
 # rubocop:disable Metrics/BlockLength
 ActiveRecord::Schema[7.0].define(version: 20_221_222_113_251) do
-  # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
   create_table 'foods', force: :cascade do |t|

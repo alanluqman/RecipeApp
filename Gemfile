@@ -19,6 +19,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
   gem 'bullet'
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'ffi'
@@ -30,7 +31,6 @@ group :development do
 end
 
 group :test do
-  gem 'capybara'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'
   gem 'webdrivers'
