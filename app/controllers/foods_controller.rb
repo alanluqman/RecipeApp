@@ -1,6 +1,16 @@
 class FoodsController < ApplicationController
   def index
     @foods = Food.where(author_id: current_user.id)
+    respond_to do |format|
+      format.html
+      format.json do
+        if user_signed_in?
+          render json: @foods
+        else
+          render html: 'you are not allowed to see this content.'
+        end
+      end
+    end
   end
 
   def show; end
