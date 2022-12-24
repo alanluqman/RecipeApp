@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.where(public: false, author_id: current_user.id)
+    @recipes = Recipe.where(author_id: current_user.id)
     respond_to do |format|
       format.html
       format.json do
@@ -14,7 +14,8 @@ class RecipesController < ApplicationController
   end
 
   def public_recipes
-    @recipes = Recipe.includes(:author).where(public: true)
+    @recipes = Recipe.includes(:author, :foods, :recipe_foods).where(public: true)
+
     respond_to do |format|
       format.html
       format.json do
@@ -25,6 +26,31 @@ class RecipesController < ApplicationController
         end
       end
     end
+  end
+
+  def make_public
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe.update(public: true)
+    if @recipe.save
+      redirect_to user_recipes_path(user_id: current_user.id) 
+    end
+  end
+
+  def make_private
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe.update(public: false)
+    if @recipe.save
+      redirect_to user_recipes_path(user_id: current_user.id) 
+    end
+  end
+
+  def shoping
+     @recipe = Recipe.includes(:foods, :recipe_foods).find(params[:recipe_id])
+     @items = @recipe.foods.length
+     @total_price = 0
+     @recipe.recipe_foods.each do |ingredient|
+      @total_price += ingredient.food.price * ingredient.quantity.to_i
+     end
   end
 
   def new; end
