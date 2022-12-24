@@ -1,16 +1,48 @@
 class RecipesController < ApplicationController
   def index
     @recipes = Recipe.where(public: false, author_id: current_user.id)
+    respond_to do |format|
+      format.html
+      format.json do
+        if user_signed_in?
+          render json: @recipes
+        else
+          render html: 'you are not allowed to see this content.'
+        end
+      end
+    end
   end
 
   def public_recipes
     @recipes = Recipe.includes(:author).where(public: true)
+    respond_to do |format|
+      format.html
+      format.json do
+        if user_signed_in?
+          render json: @recipes
+        else
+          render html: 'you are not allowed to see this content.'
+        end
+      end
+    end
   end
 
   def new; end
 
   def show
     @recipe = Recipe.includes(recipe_foods: [:food]).find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json do
+        if current_user.id == params[:user_id].to_i
+          recipe = Recipe.find(params[:id])
+          ingredients = RecipeFood.where(recipe_id: recipe.id)
+          render json: { recipe:, ingredients: }
+        else
+          render html: 'you are not allowed to see this content.'
+        end
+      end
+    end
   end
 
   def create
