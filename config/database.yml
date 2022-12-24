@@ -3,11 +3,11 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: gordon
-  password: root
+  # username: gordon
+  # password: root
 
-  # username: postgres
-  # password: admin
+  username: postgres
+  password: admin
 
 
 development:
