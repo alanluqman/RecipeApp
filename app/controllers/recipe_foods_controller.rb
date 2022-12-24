@@ -5,6 +5,7 @@ class RecipeFoodsController < ApplicationController
 
   def new
     @recipe = Recipe.find(params[:recipe_id])
+    @foods = Food.where(author: current_user)
   end
 
   def create
