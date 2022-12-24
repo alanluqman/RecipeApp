@@ -2,10 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'food/index.html.erb', type: :feature do
   describe 'Food#index' do
-    before(:each) do
+    before(:example) do
       @user = User.create(name: 'Alan', role: 'admin', email: 'test@gmail.com', password: 'password')
-      Food.create!(name: 'orange', measurement_unit: 'grams', price: 10, author: @user)
-
+      @food = Food.create!(name: 'orange', measurement_unit: 'grams', price: 10, author: @user)
       visit new_user_session_path
       fill_in 'Email', with: 'test@gmail.com'
       fill_in 'Password', with: 'password'
@@ -13,8 +12,12 @@ RSpec.describe 'food/index.html.erb', type: :feature do
       visit user_foods_path(user_id: @user.id)
     end
 
-    it 'should display all the food details' do
-      expect(page).to have_content 'You need to sign in or sign up before continuing'
+    it 'should display all the food name' do
+      expect(page).to have_content(@food.name)
+    end
+
+     it 'should display food measurement' do
+      expect(page).to have_content(@food.measurement_unit)
     end
   end
 end
