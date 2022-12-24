@@ -3,11 +3,21 @@
 <div class = 'container '>
   <h1 class = 'heading_1 text_center white_color'>Public Recipes</h1>
   <% @recipes.each do |recipe| %>
+    <% @value = 0 %>
+    <% recipe.recipe_foods.each do |ingredient| %>
+      <% @value += ingredient.food.price * ingredient.quantity.to_i %>
+    <% end %>
     <div class = 'recipe_card'>
       <a href = "/users/<%= recipe.author_id %>/recipes/<%= recipe.id %> " >
         <div>
+          <div class = 'd_flex space_between'>
           <h1 class = 'heading_1'><%= recipe.name %></h1>
+          <h2 class = 'heading_3'>Total Food Items : <%= recipe.foods.length %></h2>
+          </div>
+          <div class = 'd_flex space_between'>
           <h2 class = 'heading_3'> By: <%= recipe.author.name %></h2>
+          <h2 class = 'heading_3'> Total Price : <%= @value %> $</h2>
+          </div>
         </div>
         <p class = 'heading_4'><%= recipe.description %></p>
       </a>
