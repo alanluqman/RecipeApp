@@ -5,6 +5,13 @@
 <div class = 'recipe_card recipe_card_show'>
   <div class = 'd_flex align_center space_between'>
     <h1 class = 'heading_1'><%= @recipe.name %></h1>
+    <% if can? :manage , @recipe %>
+      <% if @recipe[:public] %>
+        <%= button_to "Private", user_recipe_make_private_path(user_id:current_user.id, recipe_id:@recipe.id), method: :patch, remote: true , class: 'btn red_color heading_4'%>
+      <% else %>
+        <%= button_to "Public", user_recipe_make_public_path(user_id:current_user.id, recipe_id:@recipe.id), method: :patch, remote: true , class: 'btn blue_color heading_4'%>
+      <% end %>
+    <% end %>
   </div>
   <p class = 'heading_3'>By : <%= @recipe.author.name %>  </p>
   <p class = 'heading_4'><%= @recipe.description %>  </p>
@@ -13,10 +20,13 @@
 <br> 
 <hr>
 <br>
+<div class = 'd_flex space_between'>
   <% if current_user.id == @recipe.author_id %>
   <%= link_to 'Add Ingrediant', new_user_recipe_recipe_food_path(user_id: current_user.id, recipe_id: @recipe.id), class:'btn btn_orange heading_4'  %>
-  <br><br><br>
   <% end %>
+  <%= link_to 'Generate Shopping List', user_recipe_generate_shopping_list_path(user_id: current_user.id, recipe_id: @recipe.id), class:'btn btn_green heading_4'  %>
+</div>
+  <br><br><br>
  <table class = 'table'>
   <tr>
     <th>Food</th>
