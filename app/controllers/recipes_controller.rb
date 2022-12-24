@@ -31,26 +31,22 @@ class RecipesController < ApplicationController
   def make_public
     @recipe = Recipe.find(params[:recipe_id])
     @recipe.update(public: true)
-    if @recipe.save
-      redirect_to user_recipes_path(user_id: current_user.id) 
-    end
+    redirect_to user_recipes_path(user_id: current_user.id) if @recipe.save
   end
 
   def make_private
     @recipe = Recipe.find(params[:recipe_id])
     @recipe.update(public: false)
-    if @recipe.save
-      redirect_to user_recipes_path(user_id: current_user.id) 
-    end
+    redirect_to user_recipes_path(user_id: current_user.id) if @recipe.save
   end
 
   def shoping
-     @recipe = Recipe.includes(:foods, :recipe_foods).find(params[:recipe_id])
-     @items = @recipe.foods.length
-     @total_price = 0
-     @recipe.recipe_foods.each do |ingredient|
+    @recipe = Recipe.includes(:foods, :recipe_foods).find(params[:recipe_id])
+    @items = @recipe.foods.length
+    @total_price = 0
+    @recipe.recipe_foods.each do |ingredient|
       @total_price += ingredient.food.price * ingredient.quantity.to_i
-     end
+    end
   end
 
   def new; end

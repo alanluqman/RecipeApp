@@ -16,7 +16,7 @@ RSpec.describe 'food/index.html.erb', type: :feature do
       expect(page).to have_content(@food.name)
     end
 
-     it 'should display food measurement' do
+    it 'should display food measurement' do
       expect(page).to have_content(@food.measurement_unit)
     end
   end

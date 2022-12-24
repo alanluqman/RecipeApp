@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Sign up Feature page', type: :feature do
-
-  before(:example) do 
-    visit new_user_registration_path 
+  before(:example) do
+    visit new_user_registration_path
   end
 
   it 'display the sign up page with test sign up' do

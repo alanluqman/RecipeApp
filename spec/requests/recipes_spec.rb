@@ -4,7 +4,8 @@ RSpec.describe 'recipe/index.html.erb', type: :feature do
   describe 'recipe#index' do
     before(:example) do
       @user = User.create(name: 'Alan', role: 'admin', email: 'test@gmail.com', password: 'password')
-      @recipe = Recipe.create(name: 'Pizza', preparation_time: 1, cooking_time: 1, description: 'taste', public: false , author: @user)
+      @recipe = Recipe.create(name: 'Pizza', preparation_time: 1, cooking_time: 1, description: 'taste',
+                              public: false, author: @user)
       visit new_user_session_path
       fill_in 'Email', with: 'test@gmail.com'
       fill_in 'Password', with: 'password'
@@ -16,7 +17,7 @@ RSpec.describe 'recipe/index.html.erb', type: :feature do
       expect(page).to have_content(@recipe.name)
     end
 
-     it 'should display recipe description' do
+    it 'should display recipe description' do
       expect(page).to have_content(@recipe.description)
     end
   end
