@@ -3,12 +3,8 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  # username: gordon
-  # password: root
-
   username: postgres
   password: admin
-
 
 development:
   <<: *default
@@ -20,6 +16,5 @@ test:
 
 production:
   <<: *default
-  # database: RecipeApp_production
-   url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
 

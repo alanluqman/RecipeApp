@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.2'
+ruby '~>3'
 gem 'bootsnap', require: false
 gem 'cancancan'
 gem 'devise'
@@ -10,8 +10,8 @@ gem 'jbuilder'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rack-cors'
-gem 'rails', '~> 7.0.4'
-gem 'rubocop'
+gem 'rails', '~> 7.1.3.4'
+gem 'rubocop', '~> 1.18'
 gem 'rubocop-rails'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
